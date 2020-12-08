@@ -13,11 +13,12 @@ function preload()
 function setup() {
 
   database = firebase.database();
-
+  
 	createCanvas(500, 500);
   
   dog = createSprite(250,250,30,30);
   dog.addImage(dogImage);
+  dog.scale = 0.2;
 
   foodStock = database.ref('Food');
   foodStock.on("value",readStock);
@@ -32,8 +33,9 @@ function draw() {
   if(keyWentDown(UP_ARROW) && foodS >= 1) {
 
     writeStock(foodS);
-    happyDog = createSprite(350,360,30,30)
+    happyDog = createSprite(250,260,30,30)
     happyDog.addImage(happyDogImage);
+    happyDog.scale = 0.2;
 
     dog.visible = false;
 
@@ -56,11 +58,11 @@ function draw() {
 
   drawSprites();
   
-  textSize(24);
+  textSize(20);
   stroke("white");
   fill("white");
-  text("Note: Press the Up Arrow Key To Feed Drago Milk!", 150,25);
-  text("Food Remaining: "+ foodS, 300,200);
+  text("Note: Press the Up Arrow Key To Feed Drago Milk!",20,25);
+  text("Food Remaining: "+ foodS, 160,400);
 
 }
 
